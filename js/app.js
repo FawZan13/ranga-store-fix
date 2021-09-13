@@ -14,20 +14,24 @@ const showProducts = (products) => {
     const div = document.createElement("div");
     div.classList.add("product","h-100");
     div.innerHTML = `<div class="single-product">
-      <div>
-        <img class="product-image" src=${image}></img>
+        <div>
+          <img class="product-image" src=${image}></img>
+        </div>
+        <h4>${product.title}</h4>
+        <p>Category: ${product.category}</p>
+        <h4>Rating: ${product.rating.rate}</h4>
+        <h4>Total Rated: ${product.rating.count}</h4>
+        <h2>Price: $ ${product.price}</h2>
+        <div class="footer">
+          <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+          <button id="details-btn" class="btn btn-danger">Details</button>
+        </div>
       </div>
-      <h4>${product.title}</h4>
-      <p>Category: ${product.category}</p>
-      <h4>Rating: ${product.rating.rate}</h4>
-      <h4>Total Rated: ${product.rating.count}</h4>
-      <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
+// update cart 
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
